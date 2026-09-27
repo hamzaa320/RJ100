@@ -1,5 +1,5 @@
 /* RJ100 Toolkit — Service Worker (cache-first, full offline after 1st visit) */
-var CACHE = "rj100-v1";
+var CACHE = "rj100-v2";
 var ASSETS = [
   "./",
   "./index.html",
