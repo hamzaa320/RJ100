@@ -629,7 +629,28 @@ html[data-theme="light"] .tab svg.ic { color: var(--muted); }
             <div class="inputs">
               <div class="field">
                 <label for="sp-w">Take-off Weight (kg)</label>
-                <input type="number" id="sp-w" value="27000" step="100">
+                <select id="sp-w">
+                  <option value="27000" selected>27000</option>
+                  <option value="28000">28000</option>
+                  <option value="29000">29000</option>
+                  <option value="30000">30000</option>
+                  <option value="31000">31000</option>
+                  <option value="32000">32000</option>
+                  <option value="33000">33000</option>
+                  <option value="34000">34000</option>
+                  <option value="35000">35000</option>
+                  <option value="36000">36000</option>
+                  <option value="37000">37000</option>
+                  <option value="38000">38000</option>
+                  <option value="39000">39000</option>
+                  <option value="40000">40000</option>
+                  <option value="41000">41000</option>
+                  <option value="42000">42000</option>
+                  <option value="43000">43000</option>
+                  <option value="44000">44000</option>
+                  <option value="45000">45000</option>
+                  <option value="46000">46000</option>
+                </select>
                 <div class="hint">27000 – 46000 kg</div>
               </div>
               <div class="field">
@@ -655,7 +676,22 @@ html[data-theme="light"] .tab svg.ic { color: var(--muted); }
             <div class="inputs">
               <div class="field">
                 <label for="ld-w">Landing Weight (kg)</label>
-                <input type="number" id="ld-w" value="27000" step="100">
+                <select id="ld-w">
+                  <option value="27000" selected>27000</option>
+                  <option value="28000">28000</option>
+                  <option value="29000">29000</option>
+                  <option value="30000">30000</option>
+                  <option value="31000">31000</option>
+                  <option value="32000">32000</option>
+                  <option value="33000">33000</option>
+                  <option value="34000">34000</option>
+                  <option value="35000">35000</option>
+                  <option value="36000">36000</option>
+                  <option value="37000">37000</option>
+                  <option value="38000">38000</option>
+                  <option value="39000">39000</option>
+                  <option value="40000">40000</option>
+                </select>
                 <div class="hint">27000 – 40000 kg</div>
               </div>
               <div class="field">
@@ -913,6 +949,14 @@ window.DATA_SPEEDS = [{"weight":27000,"takeoff":{"18":{"VR":101,"V2":117},"24":{
   $("btn-n1ref").addEventListener("click", calcN1Ref);
   ["n1ref-pa", "n1ref-oat"].forEach(function (id) {
     $(id).addEventListener("keydown", function (e) { if (e.key === "Enter") calcN1Ref(); });
+  });
+
+  // J1: OAT entered here is mirrored automatically into the CLIMB and MCT views
+  $("n1ref-oat").addEventListener("input", function () {
+    var v = this.value;
+    if (v === "") return;
+    if ($("climb-oat")) $("climb-oat").value = v;
+    if ($("mct-oat"))   $("mct-oat").value  = v;
   });
 
   function calcN1Ref() {
